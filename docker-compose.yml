@@ -13,8 +13,8 @@ services:
       - REGISTRY_HTTP_TLS_CERTIFICATE=/certs/reg.kubernetes.lol.crt
       - REGISTRY_HTTP_TLS_KEY=/certs/reg.kubernetes.lol.key
     volumes:
-      - /var/lib/registry:/var/lib/registry
-      - /opt/certs:/certs:ro
+      - ./data:/var/lib/registry
+      - ./certs:/certs:ro
       - ./auth:/auth
     ports:
       - 5000:5000
@@ -24,7 +24,7 @@ services:
     image: library/nginx:alpine
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-      - /opt/certs:/certs:ro
+      - ./certs:/certs:ro
     ports:
       - 80:80
       - 443:443
