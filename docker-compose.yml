@@ -25,6 +25,7 @@ services:
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./certs:/etc/nginx/conf.d/
+      - ./auth/htpasswd:/etc/nginx/conf.d/nginx.htpasswd
     ports:
       - 80:80
       - 443:443
