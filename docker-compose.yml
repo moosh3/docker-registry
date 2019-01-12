@@ -1,0 +1,32 @@
+version: "2"
+
+services:
+  registry:
+    image: registry:2
+    restart: unless-stopped
+    environment:
+      # htpasswd authentication
+      - "REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm"
+      - "REGISTRY_AUTH=htpasswd"
+      - REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd
+      # SSL
+      - REGISTRY_HTTP_TLS_CERTIFICATE=/certs/reg.kubernetes.lol.crt
+      - REGISTRY_HTTP_TLS_KEY=/certs/reg.kubernetes.lol.key
+    volumes:
+      - /var/lib/registry:/var/lib/registry
+      - /opt/certs:/certs:ro
+      - ./auth:/auth
+    ports:
+      - 5000:5000
+      - 5001:5001 # required to access debug service
+
+  nginx:
+    image: library/nginx:alpine
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - /opt/certs:/certs:ro
+    ports:
+      - 80:80
+      - 443:443
+    links:
+      - registry:registry
