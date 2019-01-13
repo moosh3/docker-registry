@@ -14,12 +14,12 @@ $ sudo -H pip install docker-compose
 
 **Inbound rules**:
 
-SSH/TCP/22
-HTTPS/TCP/443
-HTTP/TCP/80 - For letsencrypt certificates
+- SSH/TCP/22
+- HTTPS/TCP/443
+- HTTP/TCP/80 # For letsencrypt certificates
 
 **Outbound rules**:
 
-ICMP
-ALL TCP
-ALL UDP
+- ICMP
+- ALL TCP
+- ALL UDP
