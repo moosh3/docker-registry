@@ -10,7 +10,7 @@ defaultEntryPoints = ["http", "https"]
     [entryPoints.https.tls]
 
 [acme]
-email = "it@integracredit.com"
+email = "aleccunningham96@gmail.com"
 storage = "acme.json"
 onDemand = true
 caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
