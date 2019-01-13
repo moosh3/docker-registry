@@ -32,6 +32,15 @@ make htpasswd
 
 4. `docker-compose up -d`
 
-### Login
+## Firewall
 
-`docker login $host`
+Inbound rules:
+
+SSH/TCP/22
+HTTPS/TCP/443
+
+Outbound rules:
+
+ICMP
+ALL TCP
+ALL UDP

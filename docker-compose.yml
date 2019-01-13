@@ -1,14 +1,10 @@
-version: "2"
+version: '3'
 
 services:
   registry:
     image: registry:2
     restart: unless-stopped
     environment:
-      # htpasswd authentication
-      - "REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm"
-      - "REGISTRY_AUTH=htpasswd"
-      - REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd
       # SSL
       - REGISTRY_HTTP_TLS_CERTIFICATE=/certs/reg.kubernetes.lol.crt
       - REGISTRY_HTTP_TLS_KEY=/certs/reg.kubernetes.lol.key
