@@ -10,36 +10,15 @@ $ sudo apt-get install docker-ce
 $ sudo -H pip install docker-compose
 ```
 
-1. Aquire certificates via letsencrypt as follows
-
-```
-$ git clone https://github.com/letsencrypt/letsencrypt.git
-$ cd letsencrypt
-$ sudo ./letsencrypt-auto certonly
-$ cd /etc/letsencrypt/live/$host
-$ cp privkey.pem /opt/registry/certs/$host.key
-$ cp fullchain.pem /opt/registry/certs/$host.crt
-$ sudo chmod 600 /opt/registry/certs
-```
-
-2. Clone this repository to `/opt/registry`
-
-3. Generate htpasswd
-
-```
-make htpasswd
-```
-
-4. `docker-compose up -d`
-
 ## Firewall
 
-Inbound rules:
+**Inbound rules**:
 
 SSH/TCP/22
 HTTPS/TCP/443
+HTTP/TCP/80 - For letsencrypt certificates
 
-Outbound rules:
+**Outbound rules**:
 
 ICMP
 ALL TCP
