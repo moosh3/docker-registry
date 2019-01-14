@@ -11,6 +11,7 @@ services:
     volumes:
       - ./data:/var/lib/registry
       - ./certs:/certs:ro
+      - ./config.yml:/etc/docker/registry/config.yml
     ports:
       - 5000:5000
       - 5001:5001 # required to access debug service
