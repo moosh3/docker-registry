@@ -3,7 +3,7 @@ version: '3'
 services:
   registry:
     image: registry:2
-    command: registry serve ./etc/docker/registry/config.yml
+    #command: registry serve ./etc/docker/registry/config.yml
     restart: unless-stopped
     environment:
       # SSL
@@ -12,7 +12,7 @@ services:
     volumes:
       - ./data:/var/lib/registry
       - ./certs:/certs:ro
-      - ./config.yml:/etc/docker/registry/config.yml
+      #- ./config.yml:/etc/docker/registry/config.yml
     ports:
       - 5000:5000
       - 5001:5001 # required to access debug service
