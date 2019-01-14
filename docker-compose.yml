@@ -15,6 +15,7 @@ services:
     ports:
       - 5000:5000
       - 5001:5001 # required to access debug service
+    container_name: registry
 
   nginx:
     image: library/nginx:alpine
@@ -27,3 +28,4 @@ services:
       - 443:443
     links:
       - registry:registry
+    container_name: nginx
