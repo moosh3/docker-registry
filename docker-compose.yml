@@ -3,6 +3,7 @@ version: '3'
 services:
   registry:
     image: registry:2
+    command: registry serve ./etc/docker/registry/config.yml
     restart: unless-stopped
     environment:
       # SSL
