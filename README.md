@@ -14,7 +14,7 @@
 
 1. `git clone https://github.com/letsencrypt/letsencrypt`
 
-2. `cd letsencrypt && certbot certonly --standalone --renew-by-default -d $host`
+2. `cd letsencrypt && certbot-auto certonly --standalone --renew-by-default -d $host`
 
 ## Firewall
 
