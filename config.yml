@@ -1,0 +1,47 @@
+version: 0.1
+log:
+  accesslog:
+    disabled: true
+  level: debug
+  formatter: text
+  fields:
+    service: registry
+    environment: staging
+storage:
+  filesystem:
+    rootdirectory: /opt/registry/data
+reporting:
+  newrelic:
+    licensekey: newreliclicensekey
+    name: newrelicname
+    verbose: true
+http:
+  addr: localhost:5000
+  net: tcp
+  host: https://reg.kubernetes.lol
+  tls:
+    certificate: /certs/reg.kubernetes.lol.crt
+    key: /certs/reg.kubernetes.lol.key
+  debug:
+    addr: localhost:5001
+  http2:
+    disabled: false
+notifications:
+  endpoints:
+    - name: listener
+      disabled: false
+      url: https://r.kubernetes.lol/event
+      headers: <http.Header>
+      timeout: 500
+      threshold: 5
+      backoff: 1000
+      ignoredmediatypes:
+        - application/octet-stream
+health:
+  - uri: https://reg.kubernetes.lol/debug/health # localhost:5001
+    headers:
+      Authorization: [Alec <password>]
+    statuscode: 200
+    timeout: 3s
+    interval: 10s
+    threshold: 3
