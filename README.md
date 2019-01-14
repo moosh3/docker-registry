@@ -12,7 +12,7 @@
 
 ## Obtaining certificates
 
-1. `git clone git@github.com/letsencrypt/letsencrypt.git`
+1. `git clone https://github.com/letsencrypt/letsencrypt`
 
 2. `cd letsencrypt && certbot certonly --standalone --renew-by-default -d $host`
 
