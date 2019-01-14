@@ -1,5 +1,4 @@
 USER = alec
-PASSWORD = registry
 
 .PHONY: htpasswd
 htpasswd:
